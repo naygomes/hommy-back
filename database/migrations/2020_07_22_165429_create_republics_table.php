@@ -18,13 +18,15 @@ class CreateRepublicsTable extends Migration
             $table->unsignedBiginteger("user_id")->nullable();
             $table->string("name");
             $table->string("cep");
+            $table->string("complement");
             $table->integer("number")-> unsigned();
-            $table->string("city")->nullable();
-            $table->string("state")->nullable();
             $table->float("price")->default(0)->unsigned();
             $table->integer("vacancies")->default(0)->unsigned();
+            $table->integer("bathrooms")->unsigned();
             $table->string("phone")->nullable();
             $table->boolean("allowAnimals");
+            $table->string("targetAudience");
+            $table->string("billsIncluded");
             $table->timestamps();
         });
         Schema::table('republics', function (Blueprint $table) {

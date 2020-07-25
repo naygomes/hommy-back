@@ -12,10 +12,15 @@ class RepublicController extends Controller
         $republic = new republic;
         $republic->name = $request->name;
         $republic->cep = $request->cep;
+        $republic->complement = $request->complement;
         $republic->number = $request->number;
         $republic->price = $request->price;
+        $republic->bathrooms = $request->bathrooms;
         $republic->vacancies = $request->vacancies;
+        $republic->phone = $request->phone;
         $republic->allowAnimals = $request->allowAnimals;
+        $republic->targetAudience = $request->targetAudience;
+        $republic->billsIncluded = $request->billsIncluded;
         $republic->save();
         return response()->json($republic);
     }
@@ -38,14 +43,11 @@ class RepublicController extends Controller
         if($request->cep) {
             $republic->cep = $request->cep;
         }
+        if ($request->complement) {
+            $republic->complement = $request->complement;
+        }
         if($request->number) {
             $republic->number = $request->number;
-        }
-        if($request->city) {
-            $republic->city = $request->city;
-        }
-        if($request->state) {
-            $republic->state = $request->state;
         }
         if($request->price) {
             $republic->price = $request->price;
@@ -53,19 +55,28 @@ class RepublicController extends Controller
         if($request->vacancies) {
             $republic->vacancies = $request->vacancies;
         }
+        if($request->bathrooms) {
+            $republic->bathrooms = $request->bathrooms;
+        }
         if($request->phone) {
             $republic->phone = $request->phone;
         }
         if($request->allowAnimals) {
             $republic->allowAnimals = $request->allowAnimals;
         }
+        if($request->targetAudience) {
+            $republic->targetAudience = $request->targetAudience;
+        }
+        if($request->billsIncluded) {
+            $republic->billsIncluded = $request->billsIncluded;
+        }
         $republic->save();
         return response()->json($republic);
     }
-    
-    public function deleteRepublic($id) {
+
+    public function deleteRepublic($id){
         republic::destroy($id);
-        return response()->json(['Produto deletado']);
+        return response()->json(['República deletada']);
     }
 
     public function addRepublic($id,$republic_id){
