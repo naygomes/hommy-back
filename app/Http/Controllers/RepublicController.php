@@ -90,7 +90,7 @@ class RepublicController extends Controller
         $user = User::findOrFail($id);
         $republic = republic::findOrFail($republic_id);
         $republic->user_id = NULL;
-        $user->save();
+        $republic->save();
         return response()->json($republic);
     }
     
